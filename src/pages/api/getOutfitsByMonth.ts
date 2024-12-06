@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const endDate = new Date(startDate);
     endDate.setMonth(startDate.getMonth() + 1); // Move to the first day of the next month
 
-    const outfits = await prisma.Outfit.findMany({
+    const outfits = await prisma.outfit.findMany({
       where: {
         createdAt: {
           gte: startDate,

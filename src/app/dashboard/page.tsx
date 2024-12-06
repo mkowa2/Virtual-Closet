@@ -7,7 +7,6 @@ const categoryOrder = ["Tops", "Bottoms", "Dresses", "Shoes", "Accessories"];
 const ITEMS_PER_PAGE = 3; 
 
 const DashboardPage = () => {
-  const [items, setItems] = useState([]);
   const [groupedItems, setGroupedItems] = useState({});
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(true);
@@ -42,8 +41,6 @@ const DashboardPage = () => {
         } else {
           setError(data.message || "Failed to fetch clothing items.");
         }
-      } catch (err) {
-        setError("An error occurred while fetching items.");
       } finally {
         setLoading(false);
       }
