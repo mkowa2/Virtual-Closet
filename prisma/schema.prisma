@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid()) // Unique user ID
+  clerkId   String   @unique              // Clerk's unique user ID
+  email     String   @unique              // User's email
+  name      String?                        // User's name (optional)
+  createdAt DateTime @default(now())       // Timestamp for when the user was created
+  items Item[]
+  outfits Outfit[]
+}
+
+model Item {
+  id            String   @id @default(cuid())
+  userId        String   // Clerk user ID for the item's owner
+  user          User     @relation(fields: [userId], references: [id])
+  imageUrl      String   // Public URL of the stored image
+  brand         String
+  color         String
+  mainCategory  String   // New field: Main category (e.g., Tops, Bottoms, etc.)
+  subCategory   String   // New field: Subcategory (e.g., Shirts, Jeans, etc.)
+  numberOfWears Int      @default(0) // Optional: Track how often the item is worn
+  createdAt     DateTime @default(now())
+}
+
+model Outfit {
+  id        String   @id @default(cuid())
+  userId    String   // Clerk user ID for the outfit's owner
+  user      User     @relation(fields: [userId], references: [id])
+  imageUrl  String   // Public URL of the outfit image
+  name      String   // Name of the outfit
+  date      DateTime @default(now()) // Date the outfit was added
+  createdAt DateTime @default(now())
+}

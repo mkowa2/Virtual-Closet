@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE "Outfit" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Outfit_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "Outfit" ADD CONSTRAINT "Outfit_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
