@@ -45,7 +45,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "Boots",
         "Scarves",
         "Gloves",
-        "Hats"
+        "Hats",
+        "Pants",
+        "Sweatpants"
       );
     } else if (temperature >= 40 && temperature < 60) {
       console.log("Adding conditions for Chilly Weather (40°F to 60°F)");
@@ -57,7 +59,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "Blazers",
         "Jackets & Bombers",
         "Hats",
-        "Scarves"
+        "Scarves",
+        "Sweatpants",
+        "Pants",
+        "Windbreakers",
+        "Vests",
+        "Sneakers",
+        "Boots",
+        "Gym Shoes"
       );
     } else if (temperature >= 60 && temperature <= 77) {
       console.log("Adding conditions for Mild Weather (60°F to 77°F)");
@@ -71,7 +80,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "Midi Dresses",
         "Sneakers",
         "Caps",
-        "Sunglasses"
+        "Sunglasses",
+        "Jeans",
+        "Pants",
+        "Gym Shoes",
+        "Sneakers"
       );
     } else if (temperature > 77) {
       console.log("Adding conditions for Hot Weather (>77°F)");
@@ -83,7 +96,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "Sandals",
         "Sunglasses",
         "Caps",
-        "Hats"
+        "Hats",
+        "Skirts",
+        "Sandals",
+        "Sunglasses",
+        "Rompers",
+        "Caps"
       );
     }
 
